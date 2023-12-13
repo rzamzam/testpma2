@@ -3,7 +3,7 @@ from keras.models import load_model
 from PIL import Image
 import numpy as np
 
-from util import classify_from_path, set_background
+from util import classify, set_background
 
 
 set_background('./BG/bg.jpg')
@@ -18,12 +18,16 @@ st.header('Please upload a chest X-ray image')
 file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 
 # load classifier
-model = load_model('./model/fixedmodel.h5', compile=False)
+model_path = './model/fixedmodel.h5' 
+loaded_model = load_model(model_path, compile=False)
+
+# Define your class names
+class_names = [0: 'Normal', 1: 'Viral Pneumonia', 2: 'Covid']
 
 # load class names
-with open('./model/labels.txt', 'r') as f:
-    class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
-    f.close()
+# with open('./model/labels.txt', 'r') as f:
+#     class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
+#     f.close()
 
 # display image
 if file is not None:
@@ -31,7 +35,7 @@ if file is not None:
     st.image(image, use_column_width=True)
 
     # classify image
-    class_name, conf_score = classify_from_path(image, model, class_names)
+    class_name, conf_score = classify(image, model, class_names)
 
     # write classification
     st.write("## {}".format(class_name))
