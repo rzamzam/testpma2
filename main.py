@@ -3,7 +3,7 @@ from keras.models import load_model
 from PIL import Image
 import numpy as np
 
-from util import classify, set_background
+from util import classify_from_path, set_background
 
 
 set_background('./BG/bg.jpg')
