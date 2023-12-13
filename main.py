@@ -29,6 +29,12 @@ class_names = {0: 'Normal', 1: 'Viral Pneumonia', 2: 'Covid'}
 #     class_names = [a[:-1].split(' ')[1] for a in f.readlines()]
 #     f.close()
 
+try:
+    image = Image.open(image_path).convert('RGB')
+except Exception as e:
+    print(f"Error opening image: {image_path}")
+    print(f"Exception details: {e}")
+    
 # display image
 if file is not None:
     image = Image.open(file).convert('RGB')
