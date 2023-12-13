@@ -22,7 +22,7 @@ model_path = './model/fixedmodel.h5'
 loaded_model = load_model(model_path, compile=False)
 
 # Define your class names
-class_names = [0: 'Normal', 1: 'Viral Pneumonia', 2: 'Covid']
+class_names = {0: 'Normal', 1: 'Viral Pneumonia', 2: 'Covid'}
 
 # load class names
 # with open('./model/labels.txt', 'r') as f:
