@@ -32,7 +32,7 @@ class_names = {0: 'Normal', 1: 'Viral Pneumonia', 2: 'Covid'}
 try:
     image = Image.open(image_path).convert('RGB')
 except Exception as e:
-    print(f"Error opening image: {image_path}")
+    print(f"Error opening image: {image}")
     print(f"Exception details: {e}")
     
 # display image
