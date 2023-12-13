@@ -11,7 +11,13 @@ from PIL import Image, ImageOps
 import numpy as np
 from tensorflow.keras.models import load_model
 
-def classify(image, model, class_names):
+from PIL import Image, ImageOps
+import numpy as np
+
+def classify_from_path(image_path, model, class_names):
+    # Load image from file path
+    image = Image.open(image_path).convert('RGB')
+
     # Resize image to (224, 224)
     image = ImageOps.fit(image, (224, 224), Image.Resampling.LANCZOS)
 
